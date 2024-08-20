@@ -96,7 +96,7 @@ BackgroundMCCCollision::BackgroundMCCCollision (std::string const& collision_nam
     // create a vector of ScatteringProcess objects from each scattering
     // process name
     for (const auto& scattering_process : scattering_process_names) {
-        // std::cout << scattering_process << std::endl;
+        std::cout << scattering_process << std::endl;
         const std::string kw_cross_section = scattering_process + "_cross_section";
         std::string cross_section_file;
         pp_collision_name.query(kw_cross_section.c_str(), cross_section_file);
@@ -512,6 +512,7 @@ void BackgroundMCCCollision::doBackgroundIonization
         const auto np_elec = elec_tile.numParticles();
         const auto np_ion = ion_tile.numParticles();
 
+        // std::cout << m_ionization_processes[0].getEnergyPenalty() << std::endl;
         auto Transform = ImpactIonizationTransformFunc(
                                                        m_ionization_processes[0].getEnergyPenalty(),
                                                        m_mass1, sqrt_kb_m, m_background_temperature_func, t
